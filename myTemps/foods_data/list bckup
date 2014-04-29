@@ -1,0 +1,31 @@
+<h1>FOOD LIST. YUM YUM YUM!</h1>
+
+<table width = "800 px">
+<tr>
+
+<td>
+<form id='main_list' method='post' action="{% url 'list:add' %}">
+{% csrf_token %}
+<ul>
+{% for object in main_menu %}
+	<input type="submit" value="Add to Menu" name="{{object.food_name}}"/>
+	<label for="object{{ forloop.counter }}">{{ object.food_name }}</label></br>
+{% endfor %}
+</ul>
+</form>
+</td>
+
+<td>
+<form id='my_list' method='post' action="{% url 'list:add' %}">
+{% csrf_token %}
+<ul>
+{% for object in my_menu %}
+	<input type="button" value="Remove" onclick="submit"/>
+	<label for="object{{ forloop.counter }}">{{ object.food_name }}</label></br>
+{% endfor %}
+</ul>
+</form>
+</td>
+
+</tr>
+</table>

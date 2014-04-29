@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>New User</title>
+	</head>
+	
+	<body>
+		<h1>Create New User</h1>
+		
+		<form id="Plan_User_form" method="post" action="{% url 'register:adding' %}">
+		{% csrf_token %}
+		<ul>
+		{% for field in form.visible_fields %}
+			<li>
+			{{ field.help_text }}
+			{{ field }}
+			</li>
+		{% endfor %}
+		</ul>
+			
+		<input type="submit" name="submit" value="Create User" />
+		</form>
+	</body>
+
+</html>
+	

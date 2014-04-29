@@ -1,0 +1,60 @@
+Welcome <strong>{{user}}</strong>
+
+<ul>
+<li>Your menu needs {{cal}} Calories in your diet</li>
+<li>Your menu needs {{pro}} more Grams of Protein</li>
+<li>Your menu needs {{fat}} more Grams of Fats</li>
+<li>Your menu needs {{carb}} more Grams of Carbs</li>
+</ul>
+
+<table width = "1000 px">
+<tr>
+
+<td>
+<h1>FOOD LIST</h1>
+<ul>
+{% for object in main_menu %}
+	<form id='main_list' method='post' action="{% url 'list:add' %}">
+		{% csrf_token %}
+		<input type="hidden" name="choice" value="{{ object.food_name }}">
+		<input type="submit" value="Add to Menu" name="selection"/>
+		<label for="object{{ forloop.counter }}">
+		
+			<table width="400 px">
+			<tr>
+			<td>{{ object.food_name }}</td>
+			<td>{{ object.Protein }}</td>
+			<td>{{ object.Carbs }}</td>
+			<td>{{ object.Fat }}</td>
+			</tr>
+			</table>
+		</label></br>
+	</form>
+{% endfor %}
+</ul>
+</td>
+
+<td>
+<ul>
+<h1>My Menu</h1>
+{% for object in my_menu %}
+	<form id='main_list' method='post' action="{% url 'list:remove' %}">
+		{% csrf_token %}
+		<input type="hidden" name="choice" value="{{ object.food_name }}">
+		<input type="submit" value="Remove" name="selection"/>
+		<label for="object{{ forloop.counter }}">{{ object.food_name }}
+		<table width="400 px">
+			<tr>
+			<td>{{ object.food_name }}</td>
+			<td>{{ object.Protein }}</td>
+			<td>{{ object.Carbs }}</td>
+			<td>{{ object.Fat }}</td>
+			</tr>
+			</table></label></br>
+	</form>
+{% endfor %}
+</ul>
+</td>
+
+</tr>
+</table>
