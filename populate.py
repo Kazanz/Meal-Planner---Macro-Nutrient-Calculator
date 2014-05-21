@@ -20,7 +20,8 @@ def getInfo():
     foods = {}
     text = open(os.path.join(os.getcwd(), "fooddatashort.txt"))
     for lines in text:
-        linelist = lines.split('    ')
+        print "LINE: %r" % lines
+        linelist = lines.split('\t') # \t may not work outside of linux
         name = linelist[0]
         data = linelist[1:len(linelist)]
         foods[name] = data
