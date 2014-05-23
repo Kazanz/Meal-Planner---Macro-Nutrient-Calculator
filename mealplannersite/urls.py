@@ -5,6 +5,5 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	url(r'^food-list/', include('foods_data.urls', namespace='list')), #app = foods_data 
-	url(r'^accounts/', include('registration.urls', namespace='registration')),
         url(r'^admin/', include(admin.site.urls)),
 )
